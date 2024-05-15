@@ -20,4 +20,4 @@ jobs:
         run: |
           echo "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./sshtest.priv
       - name: Copy readme to external server
-        run: scp "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:" -i ./sshtest.priv
+        run: scp -i ./sshtest.priv "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:"
