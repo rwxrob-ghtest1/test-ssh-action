@@ -18,6 +18,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Write deployment key/ident to a file
         run: |
+          mkdir -p ~/.ssh
           echo "${{ secrets.HOST_KEY }}" >> ~/.ssh/known_hosts
           echo "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./sshtest.priv
       - name: Copy readme to external server
