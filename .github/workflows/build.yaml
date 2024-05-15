@@ -24,3 +24,5 @@ jobs:
           chmod 600 ./sshtest.priv
       - name: Copy readme to external server
         run: scp -i ./sshtest.priv "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:"
+      - name: Run incoming queue rsync command
+        run: ssh -i ./sshtest.priv "date"
