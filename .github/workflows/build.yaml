@@ -16,3 +16,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Copy readme to external server
+        #KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+        with:
+          source: "${{ github.workspace}}/README.md"
+          target: '.'
+        run: scp "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:"
