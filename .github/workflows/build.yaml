@@ -1,0 +1,10 @@
+name: GitHub SSH Action Test
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "huzzah"
+  #run-remote-ssh-command:
