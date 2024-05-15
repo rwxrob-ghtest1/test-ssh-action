@@ -16,5 +16,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Write deployment key/ident to a file
+        run: |
+          echo "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./sshtest.priv
       - name: Copy readme to external server
-        run: scp "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:"
+        run: scp "${{ github.workspace }}/README.md" "${{ secrets.USER }}@${{ secrets.HOST }}:" -i ./sshtest.priv
