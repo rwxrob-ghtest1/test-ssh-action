@@ -38,5 +38,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Grab the release archives
-        run: echo ${{ env.GITHUB_REF_NAME }}
+        run: echo $GITHUB_REF_NAME
 
