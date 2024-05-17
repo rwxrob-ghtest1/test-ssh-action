@@ -1,8 +1,9 @@
 name: GitHub SSH Action Test
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  push
+  tag
 jobs:
+  build-go
   copy-file:
     runs-on: ubuntu-latest
     steps:

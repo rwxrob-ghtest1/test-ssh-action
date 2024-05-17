@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+# This script runs on the target and is invoked by ssh from the
+# GitHub workflow contained in deploy.yaml.
+
+# local directory (on GitHub runner container) to be rsynced to target host
+DISTDIR=dist
+
+# target host to which to rsync the DISTDIR
+HOST=sshtest
+
+
+SSHKEY=ssh.key
