@@ -34,6 +34,7 @@ jobs:
 
   deploy:
     name: Deploy latest to server
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - name: Grab the release archives
