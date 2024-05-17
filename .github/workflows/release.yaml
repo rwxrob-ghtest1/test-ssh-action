@@ -33,9 +33,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-      - name: Output artifacts list
-        needs: release
-        steps:
-          - name: Output artifacts data
-            run: echo ${{ needs.release.outputs.artifacts }}
+    name: Release on GitHub
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output artifacts data
+        run: echo ${{ needs.release.outputs.artifacts }}
 
