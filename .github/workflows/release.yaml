@@ -6,6 +6,7 @@ on:
 
 jobs:
   release:
+    permissions: write-all
     name: Release on GitHub
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +27,7 @@ jobs:
       - name: Create release on GitHub
         uses: goreleaser/goreleaser-action@v5
         with:
-          args: release
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
