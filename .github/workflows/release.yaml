@@ -38,5 +38,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output artifacts data
-        run: echo ${{ needs.release.outputs.artifacts }}
+        run: echo ${{ needs.release.outputs }}
 
