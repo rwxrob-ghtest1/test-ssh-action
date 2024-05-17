@@ -5,6 +5,7 @@ on:
       - v*
 
 jobs:
+
   release:
     permissions: write-all
     name: Release on GitHub
@@ -30,4 +31,11 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+      - name: Output artifacts list
+        needs: release
+        steps:
+          - name: Output artifacts data
+            run: echo ${{ needs.release.outputs.artifacts }}
 
