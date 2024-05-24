@@ -27,4 +27,4 @@ jobs:
           echo "${{ secrets.HOST_KEY }}" >> ~/.ssh/known_hosts
 
       - name: Run ssh command
-        run: ssh -i ./ssh.priv "${{secrets.USER}}@${{secrets.HOST}}" time
+        run: ssh -i ./ssh.priv "${{secrets.USER}}@${{secrets.HOST}}" date
