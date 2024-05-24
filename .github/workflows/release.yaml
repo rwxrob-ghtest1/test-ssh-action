@@ -1,0 +1,42 @@
+name: Release
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+
+  release:
+    permissions: write-all
+    name: Release on GitHub
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+
+      - name: Validate Go releaser config
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          args: check
+
+      - name: Create release on GitHub
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy latest to server
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Grab the release archives
+        run: echo $GITHUB_REF_NAME
+
