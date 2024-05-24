@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir ./deploy
           cp hello ./deploy
-          cp README.md ./deploy
+          find .
 
       - name: Deploy with ssh/scp
         uses: rwxrob-ghtest1/deploy-with-ssh@v1
