@@ -19,3 +19,12 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 
+      - name: Setup ssh
+        run: |
+          cat "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./ssh.priv
+          chmod 0600 ./ssh.priv
+          mkdir -p ~/.ssh
+          cat "${{ vars.HOST_KEY }}" >> ~/.ssh/known_hosts
+
+      - name: Run ssh command
+        run: ssh -i ./ssh.priv "${{vars.USER}}@${{vars.HOST}}" time
