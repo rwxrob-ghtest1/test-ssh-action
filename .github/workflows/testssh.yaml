@@ -21,10 +21,10 @@ jobs:
 
       - name: Setup ssh
         run: |
-          cat "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./ssh.priv
+          echo "${{ secrets.SSH_DEPLOYMENT_KEY }}" > ./ssh.priv
           chmod 0600 ./ssh.priv
           mkdir -p ~/.ssh
-          cat "${{ secrets.HOST_KEY }}" >> ~/.ssh/known_hosts
+          echo "${{ secrets.HOST_KEY }}" >> ~/.ssh/known_hosts
 
       - name: Run ssh command
         run: ssh -i ./ssh.priv "${{secrets.USER}}@${{secrets.HOST}}" time
